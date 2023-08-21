@@ -14,7 +14,7 @@ namespace CommentsAPI.Helpers
         }
         public async Task<int> SendRequest(CreateCommentCommand request)
         {
-            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(10, 15)));
+            await Task.Delay(TimeSpan.FromSeconds(new Random().Next(10, 15)));
             int commentId = await _mediator.Send(request);
 
             return commentId;

@@ -113,8 +113,7 @@ namespace CommentsAPI.Controllers
         {
             IMonitoringApi jobMonitoringApi = JobStorage.Current.GetMonitoringApi();
             JobDetailsDto job = jobMonitoringApi.JobDetails(jobId);
-            var data = job.InvocationData;
-            var anotherData = job.Properties;
+
             if (job.History[0].StateName == "Enqueued" || job.History[0].StateName == "Processing")
             {
                 return StatusCode((int)HttpStatusCode.Accepted, jobId);
